@@ -100,7 +100,7 @@ module.exports = {
         return getWalletProvider("goerli");
       },
       gasPrice: 7000000000,
-      gas: 6700000
+      gas: 7000000
     },
     development: {
       host: "localhost",
