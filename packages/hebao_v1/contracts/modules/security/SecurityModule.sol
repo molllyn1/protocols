@@ -56,9 +56,8 @@ abstract contract SecurityModule is MetaTxModule
     }
 
     // overridding
-    modifier onlyFromMetaTxOrWalletOwner(address wallet) override {
+    modifier onlyFromMetaTx(address wallet) override {
         require(
-            msg.sender == Wallet(wallet).owner() ||
             msg.sender == address(this),
             "NOT_FROM_METATX_OR_WALLET_OWNER"
         );

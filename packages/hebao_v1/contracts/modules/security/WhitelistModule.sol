@@ -51,7 +51,7 @@ contract WhitelistModule is SecurityModule
         external
         nonReentrant
         onlyWhenWalletUnlocked(wallet)
-        onlyFromMetaTxOrWalletOwner(wallet)
+        onlyFromMetaTx(wallet)
     {
         controller.whitelistStore().addToWhitelist(wallet, addr, now.add(delayPeriod));
     }
@@ -63,7 +63,7 @@ contract WhitelistModule is SecurityModule
         external
         nonReentrant
         onlyWhenWalletUnlocked(wallet)
-        onlyFromMetaTx
+        onlyFromMetaTx(wallet)
     {
         controller.whitelistStore().addToWhitelist(wallet, addr, now);
     }
@@ -75,7 +75,7 @@ contract WhitelistModule is SecurityModule
         external
         nonReentrant
         onlyWhenWalletUnlocked(wallet)
-        onlyFromMetaTxOrWalletOwner(wallet)
+        onlyFromMetaTx(wallet)
     {
         controller.whitelistStore().removeFromWhitelist(wallet, addr);
     }

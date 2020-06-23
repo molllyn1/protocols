@@ -42,20 +42,13 @@ contract BaseModule is ReentrancyGuard, Module
         _;
     }
 
-    modifier onlyFromMetaTx() virtual {
-        require(msg.sender == address(this), "NOT_FROM_META_TX");
-        _;
-    }
-
     modifier onlyFromWalletOwner(address wallet) virtual {
         require(msg.sender == Wallet(wallet).owner(), "NOT_FROM_WALLET_OWNER");
         _;
     }
 
-    modifier onlyFromMetaTxOrWalletOwner(address wallet) virtual {
-        require(
-            msg.sender == address(this) || msg.sender == Wallet(wallet).owner(),
-            "NOT_FROM_METATX_OR_WALLET_OWNER");
+    modifier onlyFromMetaTx(address wallet) virtual {
+        require(msg.sender == address(this), "NOT_FROM_META_TX");
         _;
     }
 
@@ -82,7 +75,7 @@ contract BaseModule is ReentrancyGuard, Module
         )
         external
         nonReentrant
-        onlyFromMetaTxOrWalletOwner(wallet)
+        onlyFromMetaTx(wallet)
     {
         Wallet(wallet).addModule(module);
     }

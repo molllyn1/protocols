@@ -49,7 +49,7 @@ contract DappTransfers is TransferModule
         nonReentrant
         onlyWhitelistedDapp(to)
         onlyWhenWalletUnlocked(wallet)
-        onlyFromMetaTxOrWalletOwner(wallet)
+        onlyFromMetaTx(wallet)
     {
         transferInternal(wallet, token, to, amount, logdata);
     }
@@ -64,7 +64,7 @@ contract DappTransfers is TransferModule
         nonReentrant
         onlyWhitelistedDapp(to)
         onlyWhenWalletUnlocked(wallet)
-        onlyFromMetaTxOrWalletOwner(wallet)
+        onlyFromMetaTx(wallet)
     {
         approveInternal(wallet, token, to, amount);
     }
@@ -79,7 +79,7 @@ contract DappTransfers is TransferModule
         nonReentrant
         onlyWhitelistedDapp(to)
         onlyWhenWalletUnlocked(wallet)
-        onlyFromMetaTxOrWalletOwner(wallet)
+        onlyFromMetaTx(wallet)
         returns (bytes memory returnData)
     {
         return callContractInternal(wallet, to, value, data);
@@ -97,7 +97,7 @@ contract DappTransfers is TransferModule
         nonReentrant
         onlyWhitelistedDapp(to)
         onlyWhenWalletUnlocked(wallet)
-        onlyFromMetaTxOrWalletOwner(wallet)
+        onlyFromMetaTx(wallet)
         returns (bytes memory returnData)
     {
         approveInternal(wallet, token, to, amount);

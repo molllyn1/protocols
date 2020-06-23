@@ -99,12 +99,6 @@ abstract contract MetaTxModule is BaseModule
         bytes   returnData
     );
 
-    modifier onlyFromMetaTx override
-    {
-        require(msg.sender == address(this), "NOT_FROM_THIS_MODULE");
-        _;
-    }
-
     constructor(Controller _controller)
         public
         BaseModule()

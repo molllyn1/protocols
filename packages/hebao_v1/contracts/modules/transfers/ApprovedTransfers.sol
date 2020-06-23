@@ -41,7 +41,7 @@ contract ApprovedTransfers is TransferModule
         external
         nonReentrant
         onlyWhenWalletUnlocked(wallet)
-        onlyFromMetaTx
+        onlyFromMetaTx(wallet)
     {
         transferInternal(wallet, token, to, amount, logdata);
     }
@@ -55,7 +55,7 @@ contract ApprovedTransfers is TransferModule
         external
         nonReentrant
         onlyWhenWalletUnlocked(wallet)
-        onlyFromMetaTx
+        onlyFromMetaTx(wallet)
     {
         approveInternal(wallet, token, to, amount);
     }
@@ -69,7 +69,7 @@ contract ApprovedTransfers is TransferModule
         external
         nonReentrant
         onlyWhenWalletUnlocked(wallet)
-        onlyFromMetaTx
+        onlyFromMetaTx(wallet)
         returns (bytes memory returnData)
     {
         return callContractInternal(wallet, to, value, data);
@@ -86,7 +86,7 @@ contract ApprovedTransfers is TransferModule
         external
         nonReentrant
         onlyWhenWalletUnlocked(wallet)
-        onlyFromMetaTx
+        onlyFromMetaTx(wallet)
         returns (bytes memory returnData)
     {
         approveInternal(wallet, token, to, amount);
